@@ -1,0 +1,10 @@
+spring.servlet.multipart.enabled: true
+spring.servlet.multipart.max-file-size: 10MB
+
+server:
+  servlet:
+    contextPath: /vm-employee-api
+  port: 8090
+logging:
+  level:
+    ROOT: DEBUG
