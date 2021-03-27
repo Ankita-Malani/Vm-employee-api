@@ -2,6 +2,7 @@ package com.vm.demo.boundary;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@RequiredArgsConstructor
 @Table(name = "employee")
 public class Employee {
 
@@ -25,7 +27,6 @@ public class Employee {
     int age;
 
     public Employee( String name, int age) {
-       // this.id = id;
         this.name = name;
         this.age = age;
     }

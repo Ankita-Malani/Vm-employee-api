@@ -11,12 +11,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class EmployeeFileHelper {
 
     public static String TYPE = "text/csv";
-    static String[] HEADERs = {"name", "age"};
+
+    private static final String EMPLOYEE_NAME = "name";
+    private static final String EMPLOYEE_AGE = "age";
 
     public static boolean hasCSVFormat(MultipartFile file) {
         return (!TYPE.equals(file.getContentType())) ? false : true;
@@ -33,8 +36,8 @@ public class EmployeeFileHelper {
 
             for (CSVRecord csvRecord : csvRecords) {
                 Employee employee = new Employee(
-                        csvRecord.get("name"),
-                        Integer.parseInt(csvRecord.get("age"))
+                        csvRecord.get(EMPLOYEE_NAME),
+                        Integer.parseInt(csvRecord.get(EMPLOYEE_AGE))
                 );
                 employeeList.add(employee);
             }
