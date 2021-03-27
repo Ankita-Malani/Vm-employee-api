@@ -2,6 +2,7 @@ package com.vm.demo.controller;
 
 import com.vm.demo.boundary.Employee;
 import com.vm.demo.boundary.Task;
+import com.vm.demo.boundary.response.EmployeeResponse;
 import com.vm.demo.boundary.response.FileUploadResponse;
 import com.vm.demo.service.EmployeeService;
 import com.vm.demo.boundary.helper.EmployeeFileHelper;
@@ -9,10 +10,7 @@ import com.vm.demo.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -53,5 +51,33 @@ public class EmployeeController {
         message = "Please upload a csv file!";
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new FileUploadResponse(message));
 
+    }
+
+
+    @PostMapping(value =  "/delete/{EmployeeId}")
+    public ResponseEntity<EmployeeResponse> deleteEmployee(@PathVariable("EmployeeId") int employeeId) {
+        String message = "";
+        try {
+            employeeService.deleteEmployee(employeeId);
+            message = "Employee deleted Successfully";
+        } catch (Exception e) {
+            message = "Error in deleting employee";
+            ResponseEntity.status(HttpStatus.FORBIDDEN).body(new EmployeeResponse(message));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new EmployeeResponse(message));
+    }
+
+    @PostMapping(value = "/update")
+    public ResponseEntity<EmployeeResponse> updateEmployee(@RequestBody Employee employee) {
+        String message = "";
+
+        try {
+            employeeService.updateEmployee(employee);
+            message = "Employee updated Successfully";
+        } catch(Exception e) {
+            message = "Error while updating employee";
+            ResponseEntity.status(HttpStatus.FORBIDDEN).body(new EmployeeResponse(message));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(new EmployeeResponse(message));
     }
 }

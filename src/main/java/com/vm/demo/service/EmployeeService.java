@@ -18,6 +18,22 @@ public class EmployeeService {
             } catch (Exception exp) {
                 exp.printStackTrace();
             }
+    }
+
+    public void deleteEmployee(int employeeId) {
+        try{
+            employeeRepository.deleteById(employeeId);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    public void updateEmployee(Employee e) {
+        try {
+            employeeRepository.save(e);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 
 }
