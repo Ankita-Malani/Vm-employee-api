@@ -1,4 +1,4 @@
-package com.vm.demo.boundary;
+package com.vm.demo.boundary.response;
 
 public class FileUploadResponse {
     private String message;

@@ -33,7 +33,6 @@ public class EmployeeFileHelper {
 
             for (CSVRecord csvRecord : csvRecords) {
                 Employee employee = new Employee(
-                        Integer.parseInt(csvRecord.get("Id")),
                         csvRecord.get("name"),
                         Integer.parseInt(csvRecord.get("age"))
                 );
