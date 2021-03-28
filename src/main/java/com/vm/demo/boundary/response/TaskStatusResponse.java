@@ -1,5 +1,6 @@
 package com.vm.demo.boundary.response;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class EmployeeResponse {
-    private  String message;
+public class TaskStatusResponse {
+
+    private int taskId;
+    private String taskStatus;
 
 }
