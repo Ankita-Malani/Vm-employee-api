@@ -5,10 +5,13 @@ The following guides illustrate how to use some features concretely:
 
 
 1) git clone https://github.com/Ankita-Malani/Vm-employee-api.git
-2) Run in terminal: mvn clean install
-3) Start DemoApplication from run tab
-4) open postman and import collection i have sent over email
-5) Hit request following requests
+2) In mysql workbench, rum query:
+    `create schema employee_api;
+
+3) Run in terminal: mvn clean install
+4) Start DemoApplication from run tab
+5) open postman and import collection i have sent over email
+6) Hit request following requests
   - file upload : Post - http://localhost:8080/api/employee/upload with file uploaded in form-data and no headers
   - deleted employee: Post - http://localhost:8080/api/employee/delete/22, 22 = employeeId
   - Upload employee:
